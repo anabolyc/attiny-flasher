@@ -3,7 +3,7 @@
 ![Open Source Hardware](/doc/images/open-source-hardware-logo.png)
 ![Open Source Software](/doc/images/open-source-software-logo.png)
 
-Please find description on each revision [one level above](/anabolyc/attiny-flasher/tree/master/hardware)
+Please find description on each revision [one level above](/..)
 
 ## Links
 
