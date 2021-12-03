@@ -40,11 +40,11 @@ Having built a product that ticks all of those boxes, we wanted to put ATtiny th
 
 ## Hardware
 
-Please find more information in the [hardware](/anabolyc/attiny-flasher/tree/master/hardware) section
+Please find more information in the [hardware](/hardware) section
 
 ## Firmware
 
-Please find more information in the [software](/anabolyc/attiny-flasher/tree/master/hardware) section
+Please find more information in the [software](/hardware) section
 
 ## Where to buy
 
