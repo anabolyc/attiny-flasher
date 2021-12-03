@@ -5,6 +5,38 @@
 
 This is hardware design files for ATtiny Flasher project
 
+![image](https://user-images.githubusercontent.com/5459747/144618748-68b3735c-2a7d-4506-89f1-b8aede229ed4.png)
+
+## Features
+
+![image](https://user-images.githubusercontent.com/5459747/144621288-b737dde0-0a01-4a6c-9c53-77841b7465e4.png)
+
+1. Host MCU - Atmega328P ![image](https://user-images.githubusercontent.com/5459747/144620501-3eebf87d-a2e3-4973-979c-14a5235b6e9d.png)
+2. Host RESET button ![image](https://user-images.githubusercontent.com/5459747/144620579-f351031a-4d71-4658-b6de-6a8b4fa7adbd.png)
+3. Flashing status indicators ![image](https://user-images.githubusercontent.com/5459747/144620630-7254bd69-e4e1-44ad-8c67-ce9246c346d1.png)
+4. Host USB port - for flashing both TARGET and HOST MCUs ![image](https://user-images.githubusercontent.com/5459747/144620654-f74ba596-8e9c-4c00-a473-980286ec46ca.png)
+5. Host ISP header - for direct hardware flashing ![image](https://user-images.githubusercontent.com/5459747/144620693-db325348-32a3-4cdc-a829-4776d43fbdd9.png)
+6. OLED screen - connected to Host, when used with stock firmware will output TARGET serial data ![image](https://user-images.githubusercontent.com/5459747/144620734-1d3f31e1-3e3d-44f0-a6ca-3ded4d74dbac.png)
+7. Programming mode switches ![image](https://user-images.githubusercontent.com/5459747/144620763-7862cfda-a0ef-4106-bcda-344fa1addb71.png)
+8. Target ISP flashing header. Compartible with Atmega and ATTiny Family MCUs ![image](https://user-images.githubusercontent.com/5459747/144620789-f467a5af-4967-4e95-8672-46a64e37ee50.png)
+9. Target socket - alternative to flashing within breadboard. Compartible with Tinyx5 and Tiny13 series. ![image](https://user-images.githubusercontent.com/5459747/144620807-819f44b0-f6bb-4140-9323-e2c2a7acecb6.png)
+10. Power Rails and voltage selectors ![image](https://user-images.githubusercontent.com/5459747/144620828-ca83b515-78db-4285-afc8-d21dff26b321.png)
+11. TARGET port LED indicators ![image](https://user-images.githubusercontent.com/5459747/144620918-e896c50e-8a21-4bfe-b8f0-9d55a106833a.png)
+12. TARGET breadboard connectors ![image](https://user-images.githubusercontent.com/5459747/144620955-2956ef2e-7ad2-4276-a696-9ef467ca4d5d.png)
+
+## Mode Switches
+
+![image](https://user-images.githubusercontent.com/5459747/144621344-74cea5d4-79c8-4450-965c-38f512137482.png)
+
+| Num | Function | ON | OFF |
+|----|----|----|----|
+| 1 | Serial Bridge between Host and Target. When enabled Serial Data from TARGET MCU will be captured on the HOST MCU (115200 baud rate by default). It will be displayed on the OLED screen, also translated to PC via on-boarde Serial-to-USB chip. When enalbed it will pullup PB3 and PB4 ports on the TARGET, therefore might be required to be off | Enabled | Disabled |
+| 2 | High voltage programming. When ON it will use built in 12V boost converter to reset HOST MCU into high voltage programming mode. Using this method you can use PB5 port of ATTINY (normally not usable), however make sure that other components of your device can handle 12V during flashing process. | Low voltage, green status LED blink slowly. | High voltage, green status LED blink rapidly |
+| 3 | Programming target. When ON incoming Serial data will be interpretet as STK500 commands and translatred accordingly to TARGET MCU. When OFF it will allow to flash HOST MCU using Arduino bootloader (in other words like normal Atmega) | Flash HOST | Flash TARGET |
+
+
+## Board Revisions
+
 This comes in multiple revisions, normally revision of the specific board will be clearly visible on the back side of the PCB.
 
 ![image](https://user-images.githubusercontent.com/5459747/144602248-bd2b6d16-f4cc-40ab-b462-3590b953f42f.png)
