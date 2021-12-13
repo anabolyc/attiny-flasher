@@ -54,8 +54,35 @@ Current distribution of board revisions looks like this
 | E | Home work was done to make HVSP work, few improvements <br /> ![image](https://user-images.githubusercontent.com/5459747/144603716-3f641c8f-f801-48f6-8c3e-dd20a97f6272.png) |  | |
 | F | Pre-production version of the board, first having UPDI and TPI hardware support. <br /> ![image](https://user-images.githubusercontent.com/5459747/144605016-f7bcbdd5-9535-4958-b31f-0bd34779a3a9.png) | B | Fixups after the first run validation <br /> ![image](https://user-images.githubusercontent.com/5459747/144605058-0ced99ef-341b-4db1-baac-79fab3ce00fe.png) |
 | G | **First batch of boards delivered to backers**. Tested with both UPDI and TPI, however require soldering to run in TPI mode. <br /> ![image](https://user-images.githubusercontent.com/5459747/144605492-b99d7d6a-2a99-4355-9d19-97316e5c4ad2.png) | C | **First batch of boards delivered to backers**. One issue is still present on the board, that was fixed using bodge resistor <br /> ![image](https://user-images.githubusercontent.com/5459747/144605459-64c80f76-ce4d-4cde-99bc-5a9d79df57d0.png) |
-| H | Work in progress. Had to replace CH340E chip with CH340G due to inavailability of the first | D | Work in progress. Issue with Clock kit was found and fixed |
+| H | Work in progress. Had to replace CH340E chip with CH340G due to inavailability of the first. **Second batch of boards delivered to backers** | D | Work in progress. Issue with Clock kit was found and fixed |
+| J | Work in progress. Based on ATMega32u4 host MCU. | | 
 
+## Pin Definitions
+
+### ATtiny Flasher
+
+Generally pins will differ slightly from revision to revision, and will be defined in [boards.h](/firmware/flasher/attiny-flasher/src/boards.h) file Most essential ones are listed below
+
+| PIN DEF | IO | G, H | J
+|----|----|----|----|
+| OLED SDA,SCL | IO | PC4,PC5 | PD1,PD0 |
+| HOST USB | IO | NA | D+,D- |
+| HOST SERIAL | IO | PD0,PD1 | NA | 
+| TINY SERIAL TX,RX | IO | PD4,PD5 | PD3,PD3 |
+| SPI (TINY PROGRAMMING, SELF PROGRAMMING) CLK,MOSI,MISO | IO | PB5,PB3,PB4 | PB1,PB2,PB3 |
+| +12V RESET ENABLE | IO | PD2 | PF1
+| TARGET RESET PULL UP,DOWN | O | PB2,PC2 | PF0,PF4
+| BUFFER ENABLE | O | PC1 (HIGH for ISP, LOW for HVSP) | PB7 (ISP), PE6 (HVSP) |
+| STATUS LEDs | O | PD7,PB0,PB1 | NA |
+| RGB LED | O | NA | PC6 |
+| UPDI IO | IO | PD6 | PD6 | 
+| SERIAL ENABLE INPUT | I | PC3 | PF5 
+
+### ATtiny Flasher Kits 
+
+Each usable pin is subscribed directly on the PCB, like on exmaple below
+
+![image](https://user-images.githubusercontent.com/5459747/145799344-505a6c2e-4c5e-4924-b312-86ae6cd9acf6.png)
 
 ## Links
 
