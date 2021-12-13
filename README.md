@@ -66,11 +66,48 @@ After implementing numerous projects using the wonderful ATtiny family of MCUs, 
 
 Having built a product that ticks all of those boxes, we wanted to put ATtiny through its paces, so we designed a collection of simple, affordable, breadboard-compatible project kits that are easy to understand, fun to build, satisfying to use, and well suited to extension and modification. There are five of them in all, and they are a great way to learn about ATtiny programming:
 
-- Traffic Light: ATtiny85-driven "traffic light"
-- Rubber Ducky: ATtiny85-driven "USB rubber ducky" tool capable of emulating keyboard & mouse devices
-- IR Messenger: ATtiny85-driven IR remote transmitter & receiver
-- Rainbow LED: ATtiny85-driven circle of addressable LEDs
-- Digital Clock: ATtiny85-driven digital clock
+### Traffic Light: ATtiny85-driven "traffic light"
+
+![image](https://user-images.githubusercontent.com/5459747/145796683-79122025-ec81-48d7-9f73-33477eac7129.png)
+
+- Onboard ATTiny85 ![image](https://user-images.githubusercontent.com/5459747/145796865-d5a6c178-560d-44e9-987f-3b413a4d1c9d.png)
+- 3 bright LEDs: green, yellow, red (PWM controllable) ![image](https://user-images.githubusercontent.com/5459747/145796892-a14c619c-7834-4a60-9213-c4971d18646f.png)
+- User-programmable button ![image](https://user-images.githubusercontent.com/5459747/145796912-b3854fe7-b8bb-4fbb-8795-e396ad15a813.png)
+- External input or output ![image](https://user-images.githubusercontent.com/5459747/145796941-0d2c1932-92d3-4145-9b01-5af8f0ee9c48.png)
+
+### Rubber Ducky: ATtiny85-driven "USB rubber ducky" tool capable of emulating keyboard & mouse devices
+
+![image](https://user-images.githubusercontent.com/5459747/145797260-2f965c6e-cff2-4b7d-b6cc-6f5a37b34abe.png)
+
+- Onboard ATTiny85 ![image](https://user-images.githubusercontent.com/5459747/145796865-d5a6c178-560d-44e9-987f-3b413a4d1c9d.png)
+- 3 user-programmable buttons ![image](https://user-images.githubusercontent.com/5459747/145796912-b3854fe7-b8bb-4fbb-8795-e396ad15a813.png)
+- USB connector with possibility act as PC keyboard or mouse ![image](https://user-images.githubusercontent.com/5459747/145796941-0d2c1932-92d3-4145-9b01-5af8f0ee9c48.png)
+
+### IR Messenger: ATtiny85-driven IR remote transmitter & receiver
+
+![image](https://user-images.githubusercontent.com/5459747/145797635-f74de5e0-80a9-4919-959b-2ff164ff9299.png)
+
+- Onboard ATTiny85 ![image](https://user-images.githubusercontent.com/5459747/145796865-d5a6c178-560d-44e9-987f-3b413a4d1c9d.png)
+- 3 user-programmable buttons ![image](https://user-images.githubusercontent.com/5459747/145796912-b3854fe7-b8bb-4fbb-8795-e396ad15a813.png)
+- IR recevier (940nm) ![image](https://user-images.githubusercontent.com/5459747/145796941-0d2c1932-92d3-4145-9b01-5af8f0ee9c48.png)
+- IR sender (dual 940nm IR LED) ![image](https://user-images.githubusercontent.com/5459747/145797786-d6326a19-1ce1-4668-8aad-e209e317f274.png)
+
+### Rainbow LED: ATtiny85-driven circle of addressable LEDs
+
+![image](https://user-images.githubusercontent.com/5459747/145797962-efee1b16-2bdd-4cac-9596-0881f9976e6b.png)
+
+- Onboard ATTiny85 ![image](https://user-images.githubusercontent.com/5459747/145796865-d5a6c178-560d-44e9-987f-3b413a4d1c9d.png)
+- 2 user-programmable buttons ![image](https://user-images.githubusercontent.com/5459747/145796912-b3854fe7-b8bb-4fbb-8795-e396ad15a813.png)
+- 8 individually addressable LEDs (WS2820) ![image](https://user-images.githubusercontent.com/5459747/145796941-0d2c1932-92d3-4145-9b01-5af8f0ee9c48.png)
+- External input or output ![image](https://user-images.githubusercontent.com/5459747/145797786-d6326a19-1ce1-4668-8aad-e209e317f274.png)
+
+### Digital Clock: ATtiny85-driven digital clock
+
+![image](https://user-images.githubusercontent.com/5459747/145798488-0826000f-f39c-4c39-b183-5cd802265cf4.png)
+- Onboard ATTiny85 ![image](https://user-images.githubusercontent.com/5459747/145796865-d5a6c178-560d-44e9-987f-3b413a4d1c9d.png)
+- 2 user-programmable buttons ![image](https://user-images.githubusercontent.com/5459747/145796912-b3854fe7-b8bb-4fbb-8795-e396ad15a813.png)
+- SPI RTC clock (DS1302) with CR1220 battery ![image](https://user-images.githubusercontent.com/5459747/145798700-1908f86c-6ebe-497f-a6d1-646ad6136e34.png)
+- 128 individually controllable LEDs (forms matrix, stacks on top) ![image](https://user-images.githubusercontent.com/5459747/145798776-0b706323-819d-4981-a2d9-117fb646b131.png)
 
 ## Hardware
 
