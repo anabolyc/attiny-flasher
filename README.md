@@ -12,6 +12,40 @@ After implementing numerous projects using the wonderful ATtiny family of MCUs, 
 - In general, we want to upload code to breadboard-connected devices and see that code in action immediately.
 - And finally, since our debugger will be connected to a PC via USB, it should handle 3.3 V and 5 V breadboard power rails as well
 
+## How to use it
+
+### Using onboard socket
+
+![image](https://user-images.githubusercontent.com/5459747/145794310-4a41d491-20d0-4a6e-aec5-e476e50f1972.png)
+- Tiny85 to be programmed ![image](https://user-images.githubusercontent.com/5459747/145794452-28c62861-e127-4d99-9208-2541a7b45062.png)
+- Breadboard lines connected to Tiny85 pins ![image](https://user-images.githubusercontent.com/5459747/145794470-71d8ed3d-89c2-4ec9-a671-21e9bb452a44.png)
+- LEDs connected to Tiny85 pins ![image](https://user-images.githubusercontent.com/5459747/145794488-3a0da93e-0e51-42a2-ac87-59283e536fa3.png)
+- Tiny85 Serial monitor displayed on LED as well as sent to host PC ![image](https://user-images.githubusercontent.com/5459747/145794656-6752d589-8a13-49ae-be51-29bedecc82eb.png)
+- Host MCU connection to PC ![image](https://user-images.githubusercontent.com/5459747/145794529-9359fdc7-d663-4259-9b59-2cdfbd5ad2c9.png)
+
+### Using breadboard
+
+![image](https://user-images.githubusercontent.com/5459747/145795092-5d8e3d47-a672-4102-960f-d47f2bbc278a.png)
+- Tiny85 to be programmed ![image](https://user-images.githubusercontent.com/5459747/145794452-28c62861-e127-4d99-9208-2541a7b45062.png)
+- Breadboard lines connected to Tiny85 pins ![image](https://user-images.githubusercontent.com/5459747/145794470-71d8ed3d-89c2-4ec9-a671-21e9bb452a44.png)
+- LEDs connected to Tiny85 pins ![image](https://user-images.githubusercontent.com/5459747/145794488-3a0da93e-0e51-42a2-ac87-59283e536fa3.png)
+- Tiny85 Serial monitor displayed on LED as well as sent to host PC ![image](https://user-images.githubusercontent.com/5459747/145794656-6752d589-8a13-49ae-be51-29bedecc82eb.png)
+- Host MCU connection to PC ![image](https://user-images.githubusercontent.com/5459747/145794529-9359fdc7-d663-4259-9b59-2cdfbd5ad2c9.png)
+
+### Using dedicated ATtiny Flasher Kits
+
+![image](https://user-images.githubusercontent.com/5459747/145795387-35692cc8-04b7-4e2f-94a4-4cc9e8997996.png)
+- Tiny85 to be programmed ![image](https://user-images.githubusercontent.com/5459747/145794452-28c62861-e127-4d99-9208-2541a7b45062.png)
+- Kit components (addressable leds and 2 push buttons) ![image](https://user-images.githubusercontent.com/5459747/145795479-d2dde429-0848-4ffb-8ffa-03a7a626c1ca.png)
+- Breadboard lines connected to Tiny85 pins ![image](https://user-images.githubusercontent.com/5459747/145794470-71d8ed3d-89c2-4ec9-a671-21e9bb452a44.png)
+- LEDs connected to Tiny85 pins ![image](https://user-images.githubusercontent.com/5459747/145794488-3a0da93e-0e51-42a2-ac87-59283e536fa3.png)
+- Tiny85 Serial monitor displayed on LED as well as sent to host PC ![image](https://user-images.githubusercontent.com/5459747/145794656-6752d589-8a13-49ae-be51-29bedecc82eb.png)
+- Host MCU connection to PC ![image](https://user-images.githubusercontent.com/5459747/145794529-9359fdc7-d663-4259-9b59-2cdfbd5ad2c9.png)
+
+### Standalone, using onboard ISP Header 
+![image](https://user-images.githubusercontent.com/5459747/145794841-b2c4e7b8-c874-4d39-adbe-7e683b24a473.png)
+- Use ATTiny Flasher like regular ISP Programmer
+
 ## ATTiny Flasher Features
 
 - Flash ATtiny85, ATtiny45, ATtiny25, and ATtiny13 via breadboard or onboard header
