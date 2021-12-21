@@ -5,9 +5,11 @@
 
 ## Introduction
 
-This is mostly unchanged [ArduinoISP](https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) code for [ATtiny Flasher](https://sonocotta.com/attiny-flasher/).
+This is debugging firmware code for [ATtiny Flasher](https://sonocotta.com/attiny-flasher/).
 
-It is adopted to be used with multiple revisions of ATtiny Flasher using [boards.h](src/boards.h) hardware definition file.
+It's purpose is to test high voltage programming mode, specifically routine to reset fuses (usually when reset-disabled fuses were flashed, and low-voltage programming no longer works).
+
+It uses Serial communication to steer programming of the target MCU.
 
 ## Links
 
