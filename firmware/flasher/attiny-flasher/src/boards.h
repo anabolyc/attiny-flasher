@@ -14,6 +14,8 @@
 // Tiny-linked Serial pins
 #define PIN_SERIAL_RX 5
 #define PIN_SERIAL_TX 4 // sometimes 2
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "C"
 #endif
 
 #if defined(FLASHER_REV_D)
@@ -23,9 +25,58 @@
 #define PIN_SERIAL_TX 4
 #define SERIAL_SENSOR_EN
 #define SERIAL_SENSOR_PIN A3
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "D"
 #endif
 
-#if defined(FLASHER_REV_E) || defined(FLASHER_REV_F) || defined(FLASHER_REV_G)
+#if defined(FLASHER_REV_E)
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "E"
+#endif
+
+#if defined(FLASHER_REV_F)
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "F"
+#endif
+
+#if defined(FLASHER_REV_G)
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "G"
+#endif
+
+#if defined(FLASHER_REV_H)
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "H"
+#endif
+
+#if defined(FLASHER_REV_J)
+#define FLASHER_MODEL "ATTINY"
+#define FLASHER_REV "J"
+#endif
+
+#ifdef MEGAFLASHER_REV_F
+#define BUF_74HC125D
+// Tiny-linked Serial pins
+#define PIN_SERIAL_RX 4
+#define PIN_SERIAL_TX 5
+#define SERIAL_SENSOR_EN
+#define SERIAL_SENSOR_PIN A3
+#define FLASHER_MODEL "MEGA"
+#define FLASHER_REV "F"
+#endif
+
+#ifdef MEGAFLASHER_REV_J
+#define BUF_74HC125D
+// Tiny-linked Serial pins
+#define PIN_SERIAL_RX 4
+#define PIN_SERIAL_TX 5
+#define SERIAL_SENSOR_EN
+#define SERIAL_SENSOR_PIN A3
+#define FLASHER_MODEL "MEGA"
+#define FLASHER_REV "G"
+#endif
+
+#if defined(FLASHER_REV_E) || defined(FLASHER_REV_F) || defined(FLASHER_REV_G) || defined(FLASHER_REV_H)
 #define REV_D_TWO_PIN_RESET
 #define HVSP_PROGRAMMER
 #define SERIAL_SENSOR_EN
@@ -46,23 +97,13 @@
     pinMode(RESET_SENSOR_PIN, INPUT);
 #endif
 
-#ifdef MEGAFLASHER_REV_F
-#define MEGAFLASHER
-#define BUF_74HC125D
-// Tiny-linked Serial pins
-#define PIN_SERIAL_RX 4
-#define PIN_SERIAL_TX 5
-#define SERIAL_SENSOR_EN
-#define SERIAL_SENSOR_PIN A3
-#endif
-
 #define RESET 10
 #if defined(REV_D_TWO_PIN_RESET)
 #define RESET_PULL A2 // Need another pin to pull it down properly
 #endif
 
 // Enable output buffer, active HIGH on 74HC126D, active LOW on 74HC125D
-#if defined(FLASHER_REV_F) || defined(FLASHER_REV_G) || defined(MEGAFLASHER_REV_F)
+#if defined(FLASHER_REV_F) || defined(FLASHER_REV_G) || defined(FLASHER_REV_H) || defined(MEGAFLASHER_REV_F)
 #define PIN_BUFEN A1
 #else
 #define PIN_BUFEN 6
@@ -141,10 +182,6 @@
 #define LED_HB 9    // Heartbeat
 #define LED_ERR 8   // Error
 #define LED_PMODE 7 // Programm
-
-#if defined(OLED_LIB_ADAFRUIT) || defined(OLED_LIB_TINY)
-#define OLED_ENABLE
-#endif
 
 // ============== PIN MODES DEFINITION ==============
 

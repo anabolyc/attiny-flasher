@@ -1,37 +1,38 @@
 #include <DigiMouse.h>
-// const int LED_PIN = 1;
 const int SHIFT_PX = 5;
+const int SHIFT_PY = 5;
 
-void setup() {
+void setup()
+{
   DigiMouse.begin();
-  // pinMode(LED_PIN, OUTPUT);
 }
 
-// void loop() {
-//   digitalWrite(LED_PIN, HIGH);
-  
-//   DigiMouse.moveY(SHIFT_PX);
-//   DigiMouse.moveX(SHIFT_PX);
-//   DigiMouse.delay(10);
-  
-//   DigiMouse.moveY(-2 * SHIFT_PX);
-//   DigiMouse.moveX(-2 * SHIFT_PX);
-//   DigiMouse.delay(10);
+uint8_t seq = 0;
 
-//   DigiMouse.moveY(SHIFT_PX);
-//   DigiMouse.moveX(SHIFT_PX);
-//   DigiMouse.delay(10);
-  
-//   digitalWrite(LED_PIN, LOW);
-  
-//   DigiMouse.delay(30000);
-// }
+void loop()
+{
+  switch (seq++ % 4)
+  {
+  case 0:
+    DigiMouse.moveX(SHIFT_PX);
+    DigiMouse.moveY(SHIFT_PY);
+    break;
 
+  case 1:
+    DigiMouse.moveX(-SHIFT_PX);
+    DigiMouse.moveY(SHIFT_PY);
+    break;
 
-void loop() {
-  int8_t x = (millis() % (SHIFT_PX * 2)) - SHIFT_PX;
-  DigiMouse.moveX(x);
-  int8_t y = (millis() % (SHIFT_PX * 2)) - SHIFT_PX;
-  DigiMouse.moveY(y);
+  case 2:
+    DigiMouse.moveX(SHIFT_PX);
+    DigiMouse.moveY(-SHIFT_PY);
+    break;
+
+  case 3:
+    DigiMouse.moveX(-SHIFT_PX);
+    DigiMouse.moveY(-SHIFT_PY);
+    break;
+  }
+
   DigiMouse.delay(150);
 }

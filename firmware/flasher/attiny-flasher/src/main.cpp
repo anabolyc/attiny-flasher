@@ -1,3 +1,8 @@
+#include <Arduino.h>
+#include <SPI.h>
+#include <Wire.h>
+#include "isp.h"
+#include "boards.h"
 #include "main.h"
 #include "logo.h"
 #include "isp.h"
@@ -76,32 +81,10 @@ void setup()
   pulse(LED_HB, 2);
 
 #ifdef OLED_ENABLE
-
-#ifdef OLED_LIB_ADAFRUIT
-  if (!display->begin(SSD1306_SWITCHCAPVCC, 0x3C))
-  {
-    Serial.println(F("SSD1306 allocation failed"));
-    for (;;)
-      pulse(LED_ERR, 1);
-  }
-
-  display->clearDisplay();
-  display->setTextSize(1);
-  display->setTextColor(SSD1306_WHITE);
-  display->setCursor(0, 0);
-  display->cp437(true);
-#endif
-
-#ifdef OLED_LIB_TINY
   display->begin(SCREEN_WIDTH, SCREEN_HEIGHT, sizeof(tiny4koled_init_128x64br), tiny4koled_init_128x64br);
-#endif
-
   logo_show(display);
-
-#ifdef OLED_LIB_TINY
-  //display->setFont(FONT6X8);
+  display->setFont(FONT6X8);
   display->on();
-#endif
 #endif
 }
 
@@ -116,13 +99,13 @@ void loop(void)
 {
 #if defined(SERIAL_SENSOR_EN)
   // check if in prog mode, since sserial blocks communication in hvsp mode
-//   bool cur_prog_mode = false;
-//   if (hv_mode)
-//   {
-// #if defined(HVSP_PROGRAMMER)
-//     cur_prog_mode = hvsp->programming;
-// #endif
-//   }
+  //   bool cur_prog_mode = false;
+  //   if (hv_mode)
+  //   {
+  // #if defined(HVSP_PROGRAMMER)
+  //     cur_prog_mode = hvsp->programming;
+  // #endif
+  //   }
   // else // sserial is not interferring with ISP programmer
   // {
   //   cur_prog_mode = isp->programming;
@@ -145,25 +128,25 @@ void loop(void)
 
   // if (!cur_prog_mode)
   // {
-    // take measurment each 255th time
-    if (++ser_state_cnt == 0)
+  // take measurment each 255th time
+  if (++ser_state_cnt == 0)
+  {
+    uint8_t _ser_mode = digitalRead(SERIAL_SENSOR_PIN);
+    if (ser_mode != _ser_mode)
     {
-      uint8_t _ser_mode = digitalRead(SERIAL_SENSOR_PIN);
-      if (ser_mode != _ser_mode)
+      if (_ser_mode == HIGH)
       {
-        if (_ser_mode == HIGH)
-        {
-          SERIAL_OUT1("SERIAL MODE -> OFF");
-          SSERIAL_DEINIT;
-        }
-        if (_ser_mode == LOW)
-        {
-          SSERIAL_INIT;
-          SERIAL_OUT1("SERIAL MODE -> ON");
-        }
-        ser_mode = _ser_mode;
+        SERIAL_OUT1("SERIAL MODE -> OFF");
+        SSERIAL_DEINIT;
       }
+      if (_ser_mode == LOW)
+      {
+        SSERIAL_INIT;
+        SERIAL_OUT1("SERIAL MODE -> ON");
+      }
+      ser_mode = _ser_mode;
     }
+  }
   // }
 #else
   if (ser_mode == -1)
@@ -280,11 +263,6 @@ void serial_bridge_loop()
         Serial.print((char)buf[j]);
 
 #ifdef OLED_ENABLE
-#ifdef OLED_LIB_ADAFRUIT
-      display->print((char)buf[j]);
-#endif
-
-#ifdef OLED_LIB_TINY
       if (buf[j] == '\n')
       {
         if (display->getCursorY() << 3 >= SCREEN_HEIGHT - SCREEN_ROW_HEIGHT)
@@ -300,21 +278,13 @@ void serial_bridge_loop()
       else
         display->print((char)buf[j]);
 #endif
-#endif
     }
 #ifdef OLED_ENABLE
-#ifdef OLED_LIB_ADAFRUIT
-    display->display();
-#endif
-
-#ifdef OLED_LIB_ADAFRUIT
     if (display->getCursorY() > SCREEN_HEIGHT - SCREEN_ROW_HEIGHT)
     {
-      display->clearDisplay();
+      display->clear();
       display->setCursor(0, 0);
     }
-#endif
-
     i = 0;
 #endif
   }
@@ -325,98 +295,26 @@ void serial_bridge_loop()
 
 bool logo_hidden = true;
 
-void logo_show(Ssd1306 *display)
+void logo_show(SSD1306Device *display)
 {
-#ifdef OLED_LIB_ADAFRUIT
-  display->clearDisplay();
-  display->drawBitmap(0, 0, bitmap_logo, LOGO_BMPWIDTH, LOGO_BMPHEIGHT, SSD1306_WHITE);
-
-  display->setTextSize(1);
-  display->setCursor(72, 0);
-#ifdef MEGAFLASHER
-  display->print(F("MEGA"));
-#else
-  display->print(F("ATTINY"));
-#endif
-  display->setCursor(72, 16);
-  display->print(F("FLASHER"));
-  display->setCursor(72, 32);
-#ifdef FLASHER_REV_C
-  display->print(F("Rev.C by"));
-#endif
-#ifdef FLASHER_REV_D
-  display->print(F("Rev.D by"));
-#endif
-#ifdef FLASHER_REV_E
-  display->print(F("Rev.E by"));
-#endif
-#ifdef FLASHER_REV_F
-  display->print(F("Rev.F by"));
-#endif
-#ifdef FLASHER_REV_G
-  display->print(F("Rev.G by"));
-#endif
-#ifdef MEGAFLASHER_REV_F
-  display->print(F("Rev.F by"));
-#endif
-  display->setCursor(72, 48);
-  display->print(F("SONOCOTTA"));
-  display->display();
-  logo_hidden = false;
-#endif
-
-#ifdef OLED_LIB_TINY
-  display->setFont(FONT8X16);
   display->clear();
   display->bitmap(0, 0, LOGO_BMPWIDTH, 8, bitmap_logo);
   display->setCursor(72, 0);
-#ifdef MEGAFLASHER
-  display->print(F("MEGA"));
-#else
-  display->print(F("ATTINY"));
-#endif
+  display->print(F(FLASHER_MODEL));
   display->setCursor(72, 2);
   display->print(F("FLASHER"));
   display->setCursor(72, 4);
-#ifdef FLASHER_REV_C
-  display->print(F("Rv.C by"));
-#endif
-#ifdef FLASHER_REV_D
-  display->print(F("Rv.D by"));
-#endif
-#ifdef FLASHER_REV_E
-  display->print(F("Rv.E by"));
-#endif
-#ifdef FLASHER_REV_F
-  display->print(F("Rv.F by"));
-#endif
-#ifdef FLASHER_REV_G
-  display->print(F("Rv.G by"));
-#endif
-#ifdef MEGAFLASHER_REV_F
-  display->print(F("Rv.F by"));
-#endif
+  display->print("Rv.");
+  display->print(FLASHER_REV);
+  display->print("by");
   display->setCursor(56, 6);
   display->print(F("SONOCOTTA"));
   display->on();
   logo_hidden = false;
-#endif
 }
 
-void logo_loop(Ssd1306 *display)
+void logo_loop(SSD1306Device *display)
 {
-#ifdef OLED_LIB_ADAFRUIT
-  if (!logo_hidden)
-    if (millis() > LOGO_SHOW_MSEC)
-    {
-      display->clearDisplay();
-      display->setCursor(0, 0);
-      display->display();
-      logo_hidden = true;
-    }
-#endif
-
-#ifdef OLED_LIB_TINY
   if (!logo_hidden)
     if (millis() > LOGO_SHOW_MSEC)
     {
@@ -424,7 +322,6 @@ void logo_loop(Ssd1306 *display)
       display->setCursor(0, 0);
       logo_hidden = true;
     }
-#endif
 }
 
 #endif
