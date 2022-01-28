@@ -51,19 +51,19 @@ All firmware files in this repo are [Platformio](https://platformio.org/) projec
 
 To install Platformio simply add an extension to VS Code
 
-...
+![Install Platformio](images/simplescreenrecorder-2022-01-28_21.06.11.mkv.gif)
 
 #### Flashing Kits using Platformio
 
 Simply open project in the Platformio IDE and run `Platformio: Build` and `Platformio: Upload` tasks. All the relevant settings can be found in `platformio.ini` file in the project folder.
 
-...
+![Build and Upload using Platformio](images/simplescreenrecorder-2022-01-28_21.10.08.mkv.gif)
 
 #### Using Platformio to update Flasher firmware
 
 Open [attiny-flasher](/firmware/flasher/attiny-flasher) folder in Platformio IDE. Find in the Platformio panel your revision of the board (Single letter, usually G, H, J etc is printed in the back side of the PCB). Use the physical switch on the Flasher to select self-programming mode. Run `Upload` task.
 
-...
+![Updating firmware using Platformio](images/simplescreenrecorder-2022-01-28_21.30.48.mkv.gif)
 
 ### Using Arduino IDE
 
@@ -72,17 +72,17 @@ All Flasher Kits are built on ATTINY85 MCU which is not supported by default in 
 https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json
 ```
 
-...
+![Adding ATTiny85 support to Arduino IDE](images/simplescreenrecorder-2022-01-28_21.14.22.mkv.gif)
 
 #### Flasher Configuration
 
 By default ATTiny Flasher would expect 115200 baudrate when programming Flasher Projects. Arduino IDE in turn uses 19200 baud rate for the same. This can be fixed by modifying Arduino IDE internal configs (which is not recomended) or by flashing Flasher with updated baud rate
 
-...
+![Updating firmware using Platformio](images/simplescreenrecorder-2022-01-28_21.30.48.mkv.gif)
 
 After this is done you may use `Arduino as ISP` programmer in the Arduino IDE with no modifications.
 
-...
+![Flashing using Arduino IDE](images/simplescreenrecorder-2022-01-28_21.32.04.mkv.gif)
 
 ### Using avrdude
 
