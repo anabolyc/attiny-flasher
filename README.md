@@ -119,9 +119,7 @@ Please find more information in the [software](/hardware) section
 
 ## Where to buy
 
-Shortly will be available to order from [Mouser](https://mouser.com).
-
-Later on will be shared on [Tindie](https://www.tindie.com/) store.
+Shortly will be available to order from [Mouser](https://mouser.com). In limited quantities possible to buy at [Tindie](https://www.tindie.com/products/sonocotta/attiny-flasher/). Unofortunately I cannot restock boards due to the lack of ATMegax68 chips.
 
 ## Links
 
